@@ -1,13 +1,4 @@
-Design and Analysis of Algorithms
-CS375 Spring 2020
-Programming Assignment 2
-Release Date: 4/1/2020
-Due: 4/15/2020 (Wednesday) at start of class
-In this assignment, you need to implement the best-first-search branch and bound algorithm for the 0-1
-knapsack problem introduced in the class. The algorithm needs to find one optimal solution as quickly as
-possible. Note: the input problem instance may not contain items in decreasing order of profit/weight, so
-your program needs to sort the items first before the search.
-The program will have 2 command line arguments: input file, output file.
+The program will have 2 command line arguments: input file, output file. \n
 Input file:
 The structure of the input file is as follows.
 Line 1: n,c // n is the size of the problem (the total number of items) and C is the total weight limit
