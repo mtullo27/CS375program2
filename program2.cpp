@@ -48,9 +48,7 @@ int main(int argc, char* argv[]) {
 
 	while (getline(infile, file))
 		lines.push_back(file);
-	for (int i = 0; i < lines.size(); i++) {
-		cout << lines[i] << endl;
-	}
 	vector <tuple<int, int>> pairs = getPair(lines);
-	
+	int capacity = get<1>(pairs[0]);
+	int numItems = get<0>(pairs[0]);
  }
