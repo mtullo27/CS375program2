@@ -23,4 +23,7 @@ int main(int argc, char* argv[]) {
 	outfile.open(argv[2]);
 
 	infile >> file;
+
+	int size = file.length();
+	
  }
