@@ -24,7 +24,8 @@ vector<tuple<int, int>> getPair(vector<string> s) {
 		for (int j = 0; j < str.length(); j++) {
 			if (str[j] == ',') {
 				string t1 = str.substr(0, j);
-				string t2 = str.substr(j + 1); 			
+				string t2 = str.substr(j + 1); 
+				first = atoi(t1);
 				tuple<int, int> temp = make_tuple(first, second);
 				ret.push_back(temp);
 				j = str.length();
