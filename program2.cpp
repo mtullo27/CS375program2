@@ -51,6 +51,6 @@ int main(int argc, char* argv[]) {
 	for (int i = 0; i < lines.size(); i++) {
 		cout << lines[i] << endl;
 	}
-	vector < tuple<int, int> pairs = getPair(lines);
+	vector <tuple<int, int>> pairs = getPair(lines);
 	
  }
