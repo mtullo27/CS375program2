@@ -57,10 +57,12 @@ int knapSack(int capacity, vector<tuple<int, int>> items, int size, vector<tuple
 			continue;
 		else {
 			included.push_back(items[i-1]);
-			cout << "item added" << endl;
 			ret-=get<1>(items[i-1]);
 			j-=get<0>(items[i-1]);
 		}
+	}
+	for (int i = 0; i < included.size(); i++) {
+		cout << get<1>(included[i]) << endl;
 	}
 	return temp;
 }
