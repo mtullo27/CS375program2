@@ -35,7 +35,8 @@ vector<tuple<int, int>> getPair(vector<string> s) {
 	}
 	return ret;
 }
-int knapSack(int capacity, vector<tuple<int, int>> items, int size, *vector<tuple<int, int>> included) {
+
+int knapSack(int capacity, vector<tuple<int, int>> items, int size) {
 	int K[size + 1][capacity + 1];
 	for (int i = 0; i < size+1; i++) {
 		for (int j = 0; j < capacity + 1; j++) {
@@ -49,23 +50,38 @@ int knapSack(int capacity, vector<tuple<int, int>> items, int size, *vector<tupl
 				K[i][j] = K[i - 1][j];
 		}
 	}
-	int ret = K[size][capacity];
-	int temp = K[size][capacity];
-	int j = capacity;
-	for (int i = size; i > 0 && ret > 0; i--){
-		if(ret == K[i-1][j])
-			continue;
-		else {
-			included.push_back(items[i-1]);
-			ret-=get<1>(items[i-1]);
-			j-=get<0>(items[i-1]);
+	return K[size][capacity];
+}
+
+vector<tuple<int, int>> knapSackBackLog(int capacity, vector<tuple<int, int>> items, int size) {
+	int K[size + 1][capacity + 1];
+	vector<tuple<int, int>> included;
+	for (int i = 0; i < size + 1; i++) {
+		for (int j = 0; j < capacity + 1; j++) {
+			tuple<int, int> temp = items[i - 1];
+			if (i == 0 || j == 0)
+				K[i][j] = 0;
+			else if (get<0>(temp) <= j) {
+				K[i][j] = max(get<1>(temp) + K[i - 1][j - get<0>(temp)], K[i - 1][j]);
+			}
+			else
+				K[i][j] = K[i - 1][j];
 		}
 	}
-	for (int i = 0; i < included.size(); i++) {
-		cout << get<1>(included[i]) << endl;
+	int ret = K[size][capacity];
+	int j = capacity;
+	for (int i = size; i > 0 && ret > 0; i--) {
+		if (ret == K[i - 1][j])
+			continue;
+		else {
+			included.push_back(items[i - 1]);
+			ret -= get<1>(items[i - 1]);
+			j -= get<0>(items[i - 1]);
+		}
 	}
-	return temp;
+	return included;
 }
+
 int main(int argc, char* argv[]) {
 	ifstream infile;
 	ofstream outfile;
@@ -85,10 +101,8 @@ int main(int argc, char* argv[]) {
 	pairs.erase(pairs.begin());
 	//for (int i = 0; i < pairs.size(); i++) 
 		//cout << get<0>(pairs[i]) <<" , "<< get<1>(pairs[i]) << endl;
-	vector <tuple<int, int>> includer;
-	int ret = knapSack(capacity, pairs, numItems, &includer);
-	for (int i = 0; i < includer.size(); i++)
-		cout << get<0>(includer[i]) << "," << get<1>(includer[i]);
+	int ret = knapSack(capacity, pairs, numItems);
+	vector<tuple<int, int>> backlog = knapSackBackLog(capacity, pairs, numItems)
 	cout << " " << endl;
 	cout << ret << endl;
 }
