@@ -48,6 +48,11 @@ int knapSack(int capacity, vector<tuple<int, int>> items, int size) {
 				K[i][j] = K[i - 1][j];
 		}
 	}
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < capacity; j++)
+			cout << K[i][j] << " ";
+		cout << endl;
+	}
 	return K[size][capacity];
 }
 int main(int argc, char* argv[]) {
