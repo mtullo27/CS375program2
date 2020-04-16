@@ -1,4 +1,5 @@
 #  Run using make and then ./BestFirstSearch inputfile, output file  
+  
 **Node counting does not work
 
 The program will have 2 command line arguments: input file, output file.  
