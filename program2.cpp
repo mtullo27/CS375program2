@@ -84,7 +84,7 @@ int main(int argc, char* argv[]) {
 	vector <tuple<int, int>> includer;
 	int ret = knapSack(capacity, pairs, numItems, includer);
 	for (int i = 0; i < includer.size(); i++)
-		cout << get<0>(includer) << "," << get<1>(includer);
+		cout << get<0>(includer[i]) << "," << get<1>(includer[i]);
 	cout << " " << endl;
 	cout << ret << endl;
 }
