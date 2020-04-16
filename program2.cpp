@@ -102,7 +102,6 @@ int main(int argc, char* argv[]) {
 	//for (int i = 0; i < pairs.size(); i++) 
 		//cout << get<0>(pairs[i]) <<" , "<< get<1>(pairs[i]) << endl;
 	int ret = knapSack(capacity, pairs, numItems);
-	vector<tuple<int, int>> backlog = knapSackBackLog(capacity, pairs, numItems)
-	cout << " " << endl;
+	vector<tuple<int, int>> backlog = knapSackBackLog(capacity, pairs, numItems);
 	cout << ret << endl;
 }
