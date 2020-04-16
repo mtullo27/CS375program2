@@ -84,6 +84,6 @@ int main(int argc, char* argv[]) {
 	int ret = knapSack(capacity, pairs, numItems, includer);
 	for (int i = 0; i < includer.size(); i++)
 		cout << get<0>(includer) << "," << get<1>(includer);
-	cout << end;
+	cout << endl;
 	cout << ret << endl;
 }
