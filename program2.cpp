@@ -35,9 +35,8 @@ vector<tuple<int, int>> getPair(vector<string> s) {
 	}
 	return ret;
 }
-int knapSack(int capacity, vector<tuple<int, int>> items, int size) {
+int knapSack(int capacity, vector<tuple<int, int>> items, int size, vector<tuple<int, int>> included) {
 	int K[size + 1][capacity + 1];
-	int count = 0;
 	for (int i = 0; i < size+1; i++) {
 		for (int j = 0; j < capacity + 1; j++) {
 			tuple<int, int> temp = items[i-1];
@@ -45,14 +44,22 @@ int knapSack(int capacity, vector<tuple<int, int>> items, int size) {
 				K[i][j] = 0;
 			else if (get<0>(temp) <= j) {
 				K[i][j] = max(get<1>(temp) + K[i - 1][j - get<0>(temp)], K[i - 1][j]);
-				count++;
 			}
 			else
 				K[i][j] = K[i - 1][j];
 		}
 	}
-		cout << count << endl;
-	return K[size][capacity];
+	int ret = K[size][capacity];
+	int j = capacity;
+	for (int i = size; i > 0 && ret > 0; i--{
+		if(ret == K[i-1][j])
+			continue;
+		else {
+			included.push_back(items[i-1]);
+			ret-=get<1>(items[i-1]);
+			j-=get<0>(items[i-1]);
+		}
+	}
 }
 int main(int argc, char* argv[]) {
 	ifstream infile;
@@ -73,6 +80,10 @@ int main(int argc, char* argv[]) {
 	pairs.erase(pairs.begin());
 	//for (int i = 0; i < pairs.size(); i++) 
 		//cout << get<0>(pairs[i]) <<" , "<< get<1>(pairs[i]) << endl;
-	int ret = knapSack(capacity, pairs, numItems);
+	vector < tuple<int, int>> includer;
+	int ret = knapSack(capacity, pairs, numItems, includer);
+	for (int i = 0; i < includer.size(); i++)
+		cout << get<0>(includer) << "," << get<1>(includer);
+	cout << end;
 	cout << ret << endl;
 }
