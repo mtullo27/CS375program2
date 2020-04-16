@@ -46,6 +46,7 @@ int knapSack(int capacity, vector<tuple<int, int>> items, int size) {
 			else if (get<0>(temp) <= j) {
 				K[i][j] = max(get<1>(temp) + K[i - 1][j - get<0>(temp)], K[i - 1][j]);
 				count++;
+			}
 			else
 				K[i][j] = K[i - 1][j];
 		}
