@@ -103,8 +103,8 @@ int main(int argc, char* argv[]) {
 		//cout << get<0>(pairs[i]) <<" , "<< get<1>(pairs[i]) << endl;
 	int ret = knapSack(capacity, pairs, numItems);
 	vector<tuple<int, int>> backlog = knapSackBackLog(capacity, pairs, numItems);
-	cout << numItems<< "," << ret << "," << backlog.size() << endl;
-	cout << "idk" << endl;
+	outfile << numItems<< "," << ret << "," << backlog.size() << endl;
+	outfile << "idk" << endl;
 	for (int i = backlog.size()-1; i>=0; i--)
-		cout << get<0>(backlog[i]) << "," << get<1>(backlog[i]) << endl;
+		outfile << get<0>(backlog[i]) << "," << get<1>(backlog[i]) << endl;
 }
