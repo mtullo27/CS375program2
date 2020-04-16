@@ -50,6 +50,7 @@ int knapSack(int capacity, vector<tuple<int, int>> items, int size, vector<tuple
 		}
 	}
 	int ret = K[size][capacity];
+	int temp = K[size][capacity];
 	int j = capacity;
 	for (int i = size; i > 0 && ret > 0; i--){
 		if(ret == K[i-1][j])
@@ -60,7 +61,7 @@ int knapSack(int capacity, vector<tuple<int, int>> items, int size, vector<tuple
 			j-=get<0>(items[i-1]);
 		}
 	}
-	return ret;
+	return temp;
 }
 int main(int argc, char* argv[]) {
 	ifstream infile;
