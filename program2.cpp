@@ -105,6 +105,6 @@ int main(int argc, char* argv[]) {
 	vector<tuple<int, int>> backlog = knapSackBackLog(capacity, pairs, numItems);
 	cout << numItems<< "," << ret << "," << backlog.size() << endl;
 	cout << "idk" << endl;
-	for (int i = 0; i < backlog.size(); i++)
+	for (int i = backlog.size()-1; i>=0; i--)
 		cout << get<0>(backlog[i]) << "," << get<1>(backlog[i]) << endl;
 }
