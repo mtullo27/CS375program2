@@ -35,7 +35,7 @@ vector<tuple<int, int>> getPair(vector<string> s) {
 	}
 	return ret;
 }
-int knapSack(int capacity, vector<tuple<int, int>> items, int size, vector<tuple<int, int>> included) {
+int knapSack(int capacity, vector<tuple<int, int>> items, int size, *vector<tuple<int, int>> included) {
 	int K[size + 1][capacity + 1];
 	for (int i = 0; i < size+1; i++) {
 		for (int j = 0; j < capacity + 1; j++) {
@@ -86,7 +86,7 @@ int main(int argc, char* argv[]) {
 	//for (int i = 0; i < pairs.size(); i++) 
 		//cout << get<0>(pairs[i]) <<" , "<< get<1>(pairs[i]) << endl;
 	vector <tuple<int, int>> includer;
-	int ret = knapSack(capacity, pairs, numItems, includer);
+	int ret = knapSack(capacity, pairs, numItems, &includer);
 	for (int i = 0; i < includer.size(); i++)
 		cout << get<0>(includer[i]) << "," << get<1>(includer[i]);
 	cout << " " << endl;
