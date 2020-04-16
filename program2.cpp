@@ -37,22 +37,20 @@ vector<tuple<int, int>> getPair(vector<string> s) {
 }
 int knapSack(int capacity, vector<tuple<int, int>> items, int size) {
 	int K[size + 1][capacity + 1];
+	int count = 0;
 	for (int i = 0; i < size+1; i++) {
 		for (int j = 0; j < capacity + 1; j++) {
 			tuple<int, int> temp = items[i-1];
 			if (i == 0 || j == 0)
 				K[i][j] = 0;
-			else if (get<0>(temp) <= j)
+			else if (get<0>(temp) <= j) {
 				K[i][j] = max(get<1>(temp) + K[i - 1][j - get<0>(temp)], K[i - 1][j]);
+				count++;
 			else
 				K[i][j] = K[i - 1][j];
 		}
 	}
-	for (int i = 0; i < size; i++) {
-		for (int j = 0; j < capacity; j++)
-			cout << K[i][j] << " ";
-		cout << endl;
-	}
+		cout << count << endl;
 	return K[size][capacity];
 }
 int main(int argc, char* argv[]) {
