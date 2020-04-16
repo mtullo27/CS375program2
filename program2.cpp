@@ -51,4 +51,7 @@ int main(int argc, char* argv[]) {
 	vector <tuple<int, int>> pairs = getPair(lines);
 	int capacity = get<1>(pairs[0]);
 	int numItems = get<0>(pairs[0]);
+	for (int i = 0; i < pairs.size(); i++) {
+		cout << get<1>(pairs[i]) << endl;
+	}
  }
