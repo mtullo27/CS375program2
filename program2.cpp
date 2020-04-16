@@ -51,7 +51,7 @@ int knapSack(int capacity, vector<tuple<int, int>> items, int size, vector<tuple
 	}
 	int ret = K[size][capacity];
 	int j = capacity;
-	for (int i = size; i > 0 && ret > 0; i--{
+	for (int i = size; i > 0 && ret > 0; i--){
 		if(ret == K[i-1][j])
 			continue;
 		else {
@@ -60,6 +60,7 @@ int knapSack(int capacity, vector<tuple<int, int>> items, int size, vector<tuple
 			j-=get<0>(items[i-1]);
 		}
 	}
+	return ret;
 }
 int main(int argc, char* argv[]) {
 	ifstream infile;
@@ -80,7 +81,7 @@ int main(int argc, char* argv[]) {
 	pairs.erase(pairs.begin());
 	//for (int i = 0; i < pairs.size(); i++) 
 		//cout << get<0>(pairs[i]) <<" , "<< get<1>(pairs[i]) << endl;
-	vector < tuple<int, int>> includer;
+	vector <tuple<int, int>> includer;
 	int ret = knapSack(capacity, pairs, numItems, includer);
 	for (int i = 0; i < includer.size(); i++)
 		cout << get<0>(includer) << "," << get<1>(includer);
